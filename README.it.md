@@ -9,24 +9,19 @@ Una piccola libreria C e uno "startkit" per l'esame, scritti per *Fondamenti di 
 | Cartella | Contenuto |
 | --- | --- |
 | [`Libreria/`](Libreria) | Tipo di elemento generico con compare/assign/swap, array dinamici, algoritmi di ordinamento (naive, bubble, insertion, merge, quick sort) e ADT lista |
-| [`Esame/`](Esame) | La libreria applicata al testo di un esame passato: lettura da file, gestione di liste e struttura tipica di una soluzione |
+| [`Esame/`](Esame) | Un modello vuoto per l’esame, con sorgenti, dati d’esempio e spazi per quattro esercizi |
 
 La libreria è costruita attorno a un tipo di elemento sostituibile (`myType`, `mySecondType`): le stesse funzioni di ordinamento e di lista si adattano ai record di ogni testo d'esame.
 
 ## Come usarlo
 
-Lo startkit si adatta a quasi tutti gli esami degli anni passati: bastano un paio di prove pratiche per prendere la mano.
+Per il modello d’esame, crea un progetto C vuoto in Visual Studio e aggiungi i file `.c` e `.h` di **Esame soltanto**. Tieni `file1.txt` e `file2.txt` nella cartella di lavoro del programma. `main.c` contiene spazi da completare, non una soluzione d’esame.
 
-<details>
-<summary>Configurazione in Visual Studio, passo per passo</summary>
+Con Clang o GCC, dalla cartella principale del repository:
 
-1. Scarica questa repository sul tuo computer.
-2. Crea un nuovo "Progetto vuoto" in Visual Studio e spunta "Inserisci soluzione e progetto nella stessa directory".
-3. In "Esplora soluzioni" seleziona ed elimina le cartelle "Dipendenze esterne", "File di intestazione", "File di origine" e "File di risorse".
-4. Tasto destro sul nome del progetto → Aggiungi → Nuovo filtro, e crea il filtro "Libreria". Ripeti per creare il filtro "Esame".
-5. Tasto destro sul nome del progetto → Apri cartella in Esplora file, e copia lì tutti i singoli file `.c` e `.h` di `Esame` e `Libreria` (i file, non le cartelle).
-6. Tasto destro sul filtro "Esame" → Aggiungi → Elemento esistente, e seleziona i file di `Esame` (`element.c`, `element.h`, `file1.txt`, `file2.txt`, `funzioni.c`, `funzioni.h`, `lib.c`, `lib.h`, `list.c`, `list.h`, `main.c`).
-7. Ripeti con il filtro "Libreria" e i file di `Libreria` (`aMyLib`, `bMyType`, `cMySecondType`, `dMyList`, `.c` e `.h`).
-8. Sei pronto per l'esame. Buona fortuna!
+```sh
+cc -std=c11 Esame/*.c -o /tmp/esame
+(cd Esame && /tmp/esame)
+```
 
-</details>
+`Libreria` è una raccolta separata da adattare all’esercizio. Non unire le due cartelle in un eseguibile: contengono definizioni sovrapposte di funzioni di utilità. La libreria storica richiede inoltre la configurazione di header e tipi; la sua dichiarazione di `srand48` è in conflitto con quella di sistema su macOS e Linux.

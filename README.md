@@ -9,10 +9,19 @@ A small C library and an exam starter kit I wrote for *Fondamenti di Informatica
 | Folder | Contents |
 | --- | --- |
 | [`Libreria/`](Libreria) | Generic element type with compare/assign/swap, dynamic arrays, sorting algorithms (naive, bubble, insertion, merge, quick sort) and a linked-list ADT |
-| [`Esame/`](Esame) | The library applied to a past exam text: file reading, list handling and the structure of a typical solution |
+| [`Esame/`](Esame) | An empty exam template with source files, sample data and placeholders for four exercises |
 
 The library is written around a replaceable element type (`myType`, `mySecondType`), so the same sorting and list functions work for the records of each exam text.
 
 ## Use it
 
-The starter kit was built for Visual Studio on Windows, which the course used. Copy the `.c` and `.h` files of both folders into an empty project, keeping `Libreria` and `Esame` as two filters, and build `Esame/main.c`. The step-by-step guide is in the [Italian README](README.it.md#come-usarlo).
+For the exam template, create an empty C project in Visual Studio and add the `.c` and `.h` files from **Esame only**. Keep `file1.txt` and `file2.txt` in the program's working directory. `main.c` contains placeholders, not a completed exam solution.
+
+With Clang or GCC, from the repository root:
+
+```sh
+cc -std=c11 Esame/*.c -o /tmp/esame
+(cd Esame && /tmp/esame)
+```
+
+`Libreria` is a separate collection to adapt to an exercise. Do not combine both folders in one executable: they contain overlapping utility definitions. The historical library also needs header/type setup, and its custom `srand48` declaration conflicts with the system declaration on macOS and Linux.
