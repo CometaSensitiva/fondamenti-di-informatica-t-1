@@ -25,3 +25,5 @@ cc -std=c11 Esame/*.c -o /tmp/esame
 ```
 
 `Libreria` è una raccolta separata da adattare all’esercizio. Non unire le due cartelle in un eseguibile: contengono definizioni sovrapposte di funzioni di utilità. La libreria storica richiede inoltre la configurazione di header e tipi; la sua dichiarazione di `srand48` è in conflitto con quella di sistema su macOS e Linux.
+
+Rilasciato con [licenza MIT](LICENSE).

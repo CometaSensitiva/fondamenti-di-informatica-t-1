@@ -25,3 +25,5 @@ cc -std=c11 Esame/*.c -o /tmp/esame
 ```
 
 `Libreria` is a separate collection to adapt to an exercise. Do not combine both folders in one executable: they contain overlapping utility definitions. The historical library also needs header/type setup, and its custom `srand48` declaration conflicts with the system declaration on macOS and Linux.
+
+Released under the [MIT license](LICENSE).
